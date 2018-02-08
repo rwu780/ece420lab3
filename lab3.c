@@ -30,7 +30,7 @@ int main(int argc, char const *argv[])
 
 
 	for(int i = 0; i < N; i++){
-		X[i] = G[i][i];
+		X[i] = G[i][N] / G[i][i];
 	}
 
 	Lab3SaveOutput(X, N, 0.0);
@@ -40,11 +40,13 @@ int main(int argc, char const *argv[])
 }
 
 void Jordan(void * rank){
-	for(int k = N-1; k > 2 ; k--){
+	for(int k = N-1; k > 0 ; k--){
 		//Eliminate elements to zero for each column one after another
 		for(int i = 0; i < k-1; i++){
 			//Row replacement one row after another
-			G[i][N+1] = G[i][N+1] - G[i][k]/G[k][k] * G[k][N+1];
+
+			//Open MP HERE
+			G[i][N] = G[i][N] - G[i][k]/G[k][k] * G[k][N];
 			G[i][k] = 0;
 		}
 	}
@@ -62,6 +64,7 @@ void Gaussian(void * rank){
 		swapRow(k, kp);
 
 		/*Elimination*/
+		//OPEN MP HERE
 		for(int i = k+1; i< N; i++){
 			double temp = G[i][k] / G[k][k];
 			for(int j = k; j<N+1; j++){
@@ -73,16 +76,18 @@ void Gaussian(void * rank){
 
 void swapRow(int row1, int row2){
 
-	double temp[N+1];
-
-	for(int i = 0; i<N+1; i++){
-		temp[i] = G[row1][i];
+	double temp;
+	//OPEN MP HERE
+	for(int i = 0; i< N+1; i++){
+		temp = G[row1][i];
 		G[row1][i] = G[row2][i];
-		G[row2][i] = temp[i];
+		G[row2][i] = temp;
 	}
 }
 
 int findAbsoluteMax(double **U, int k, int n){
+
+	//OPEN MP HERE
 	int kp = 0;
 	int maxAbsolute = 0;
 	for(int i = k; i<n; i++){
