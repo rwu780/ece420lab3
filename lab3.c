@@ -35,14 +35,14 @@ int main(int argc, char const *argv[])
 	Gaussian(NULL);
 	Jordan(NULL);
 
-# pragma omp parallel num_threads(p)
+	# pragma omp parallel num_threads(p)
 	{
-# pragma omp for
-	for(int i = 0; i < N; i++){
-		//open MP here
-		X[i] = G[i][N] / G[i][i];
+		# pragma omp for
+		for(int i = 0; i < N; i++){
+			//open MP here
+			X[i] = G[i][N] / G[i][i];
+		}	
 	}
-}
 	
 	GET_TIME(end);
 
@@ -58,16 +58,18 @@ int main(int argc, char const *argv[])
 
 void Jordan(void * rank){
 
-# pragma omp parallel num_threads(p)
-	{
-# pragma omp for
-		for(int k = N-1; k > 0 ; k--){
+
+	for(int k = N-1; k > 0 ; k--){
+		# pragma omp parallel num_threads(p)
+		{
+		# pragma omp for
 		//Eliminate elements to zero for each column one after another
 			for(int i = 0; i < k; i++){
 				//Row replacement one row after another
 				//Open MP HERE
 				G[i][N] = G[i][N] - G[i][k]/G[k][k] * G[k][N];
 				G[i][k] = 0;
+	
 			}
 		}
 	}
@@ -86,9 +88,9 @@ void Gaussian(void * rank){
 		/*Elimination*/
 
 		//OPEN MP HERE
-# pragma omp parallel num_threads(p)
+		# pragma omp parallel num_threads(p)
 		{
-# pragma omp for
+			# pragma omp for
 			for(int i = k+1; i< N; i++){
 				double temp = G[i][k] / G[k][k];
 				for(int j = k; j<N+1; j++){
@@ -102,9 +104,9 @@ void Gaussian(void * rank){
 void swapRow(int row1, int row2){
 
 	//OPEN MP HERE
-# pragma omp parallel num_threads(p)
+	# pragma omp parallel num_threads(p)
 	{
-# pragma omp for
+		# pragma omp for
 		for(int i = 0; i< N+1; i++){
 			double temp = G[row1][i];
 			G[row1][i] = G[row2][i];
@@ -119,9 +121,9 @@ int findAbsoluteMax(double **U, int k, int n){
 	int kp = 0;
 	int maxAbsolute = 0;
 
-# pragma omp parallel num_threads(p)
+	# pragma omp parallel num_threads(p)
 	{
-# pragma omp for
+		# pragma omp for
 		for(int i = k; i<n; i++){
 			if(fabs(U[i][k]) >= maxAbsolute){
 				# pragma omp critical
