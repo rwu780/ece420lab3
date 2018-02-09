@@ -42,7 +42,7 @@ int main(int argc, char const *argv[])
 void Jordan(void * rank){
 	for(int k = N-1; k > 0 ; k--){
 		//Eliminate elements to zero for each column one after another
-		for(int i = 0; i < k-1; i++){
+		for(int i = 0; i < k; i++){
 			//Row replacement one row after another
 
 			//Open MP HERE
