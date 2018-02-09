@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
+#include <omp.h>
 
 #include "Lab3IO.h"
 #include "timer.h"
@@ -22,20 +23,34 @@ int main(int argc, char const *argv[])
 		exit(1);
 	}
 
+	p = atoi(argv[1]);
+
+	double start, end;
+
 	Lab3LoadInput(&G, &N);
+	
+	GET_TIME(start);
 	X = calloc(N, sizeof(double));
 
 	Gaussian(NULL);
 	Jordan(NULL);
 
-
+	
 	for(int i = 0; i < N; i++){
+		//open MP here
 		X[i] = G[i][N] / G[i][i];
 	}
+	
 
-	Lab3SaveOutput(X, N, 0.0);
+	GET_TIME(end);
 
-	/* code */
+	double duration = end - start;
+	Lab3SaveOutput(X, N, duration);
+
+	printf("%f\n", duration);
+
+	free(X);
+	free(G);
 	return 0;
 }
 
@@ -53,10 +68,9 @@ void Jordan(void * rank){
 }
 
 void Gaussian(void * rank){
-	// double **U = G;
 	for(int k = 0; k< N-1; k++){
-		/* eliminate elements below the diagonal to zero one column after another */
-		//Pivoting
+		// eliminate elements below the diagonal to zero one column after another
+		// Pivoting
 		// In U, from row k to row n, find the row kp, that has the maximum absolute value
 		int kp = findAbsoluteMax(G, k, N);
 
@@ -64,7 +78,9 @@ void Gaussian(void * rank){
 		swapRow(k, kp);
 
 		/*Elimination*/
+
 		//OPEN MP HERE
+
 		for(int i = k+1; i< N; i++){
 			double temp = G[i][k] / G[k][k];
 			for(int j = k; j<N+1; j++){
@@ -76,12 +92,13 @@ void Gaussian(void * rank){
 
 void swapRow(int row1, int row2){
 
-	double temp;
 	//OPEN MP HERE
-	for(int i = 0; i< N+1; i++){
-		temp = G[row1][i];
-		G[row1][i] = G[row2][i];
-		G[row2][i] = temp;
+# pragma omp parallel num_threads(p){
+		for(int i = 0; i< N+1; i++){
+			double temp = G[row1][i];
+			G[row1][i] = G[row2][i];
+			G[row2][i] = temp;
+		}
 	}
 }
 
