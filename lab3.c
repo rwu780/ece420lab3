@@ -58,7 +58,6 @@ int main(int argc, char const *argv[])
 
 void Jordan(void * rank){
 
-
 	for(int k = N-1; k > 0 ; k--){
 		# pragma omp parallel num_threads(p)
 		{
@@ -83,7 +82,10 @@ void Gaussian(void * rank){
 		int kp = findAbsoluteMax(G, k, N);
 
 		//Swap row k and row kp
-		swapRow(k, kp);
+		//swapRow(k, kp);
+		double *temp = G[k];
+		G[k] = G[kp];
+		G[kp] = temp;
 
 		/*Elimination*/
 
@@ -100,7 +102,7 @@ void Gaussian(void * rank){
 		}
 	}
 }
-
+/*
 void swapRow(int row1, int row2){
 
 	//OPEN MP HERE
@@ -108,13 +110,15 @@ void swapRow(int row1, int row2){
 	{
 		# pragma omp for
 		for(int i = 0; i< N+1; i++){
-			double temp = G[row1][i];
-			G[row1][i] = G[row2][i];
-			G[row2][i] = temp;
+			//for(int j = 0; j<8; j++){
+				double temp = G[row1][i];
+				G[row1][i] = G[row2][i];
+				G[row2][i] = temp;
+			//}
 		}
 	}
 }
-
+*/
 int findAbsoluteMax(double **U, int k, int n){
 
 	//OPEN MP HERE
@@ -125,9 +129,11 @@ int findAbsoluteMax(double **U, int k, int n){
 	{
 		# pragma omp for
 		for(int i = k; i<n; i++){
-			if(fabs(U[i][k]) >= maxAbsolute){
-				# pragma omp critical
-				{
+			#pragma omp critical
+			{
+				if(fabs(U[i][k]) >= maxAbsolute){
+				//# pragma omp critical
+				//{
 					maxAbsolute = fabs(U[i][k]);
 					kp = i;
 				}
