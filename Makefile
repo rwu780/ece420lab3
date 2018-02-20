@@ -1,5 +1,8 @@
 all: datagen serialtester
-	gcc -g -Wall -std=c99 -fopenmp Lab3IO.c lab3.c -o main 
+	gcc -g -Wall -std=c99 -fopenmp Lab3IO.c lab3_twoParallelDirectives.c -o main 
+
+multiple: datagen serialtester
+	gcc -g -Wall -std=c99 -fopenmp Lab3IO.c lab3_multipleParallelDirectives.c -o main
 
 baseline: datagen serialtester
 	gcc -g -Wall -std=c99 -fopenmp Lab3IO.c Lab3_baseline_ompsolution.c -o main

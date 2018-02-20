@@ -1,0 +1,128 @@
+=====Evaluation for Lab 3 code.=====
+Enter the exacutable file name for generating data and press [ENTER] (default is datagen):
+Enter the exacutable file name for serial testing and press [ENTER] (default is serialtester):
+Enter the exacutable file name for matrix multiplication and press [ENTER] (default is main):
+Evaluating the results...
+Generating the testing data...
+SAMPLE 64
+1 threads
+Attempt Number 1: The relative error to the reference solution is 1.252291e-07
+Congratulation!!! Your result is accepted!
+Time of calculation: 0.000999
+Attempt Number 2: The relative error to the reference solution is 1.252291e-07
+Congratulation!!! Your result is accepted!
+Time of calculation: 0.001117
+Attempt Number 3: The relative error to the reference solution is 1.252291e-07
+Congratulation!!! Your result is accepted!
+Time of calculation: 0.001015
+Attempt Number 4: The relative error to the reference solution is 1.252291e-07
+Congratulation!!! Your result is accepted!
+Time of calculation: 0.001009
+4 threads
+Attempt Number 1: The relative error to the reference solution is 1.252291e-07
+Congratulation!!! Your result is accepted!
+Time of calculation: 0.001595
+Attempt Number 2: The relative error to the reference solution is 1.252291e-07
+Congratulation!!! Your result is accepted!
+Time of calculation: 0.001512
+Attempt Number 3: The relative error to the reference solution is 1.252291e-07
+Congratulation!!! Your result is accepted!
+Time of calculation: 0.001371
+Attempt Number 4: The relative error to the reference solution is 1.252291e-07
+Congratulation!!! Your result is accepted!
+Time of calculation: 0.001139
+16 threads
+Attempt Number 1: The relative error to the reference solution is 1.252291e-07
+Congratulation!!! Your result is accepted!
+Time of calculation: 0.022332
+Attempt Number 2: The relative error to the reference solution is 1.252291e-07
+Congratulation!!! Your result is accepted!
+Time of calculation: 0.026973
+Attempt Number 3: The relative error to the reference solution is 1.252291e-07
+Congratulation!!! Your result is accepted!
+Time of calculation: 0.025060
+Attempt Number 4: The relative error to the reference solution is 1.252291e-07
+Congratulation!!! Your result is accepted!
+Time of calculation: 0.024862
+Generating the testing data...
+SAMPLE 256
+1 threads
+Attempt Number 1: The relative error to the reference solution is 1.833160e-07
+Congratulation!!! Your result is accepted!
+Time of calculation: 0.045021
+Attempt Number 2: The relative error to the reference solution is 1.833160e-07
+Congratulation!!! Your result is accepted!
+Time of calculation: 0.050043
+Attempt Number 3: The relative error to the reference solution is 1.833160e-07
+Congratulation!!! Your result is accepted!
+Time of calculation: 0.046126
+Attempt Number 4: The relative error to the reference solution is 1.833160e-07
+Congratulation!!! Your result is accepted!
+Time of calculation: 0.046000
+4 threads
+Attempt Number 1: The relative error to the reference solution is 1.833160e-07
+Congratulation!!! Your result is accepted!
+Time of calculation: 0.029193
+Attempt Number 2: The relative error to the reference solution is 1.833160e-07
+Congratulation!!! Your result is accepted!
+Time of calculation: 0.021722
+Attempt Number 3: The relative error to the reference solution is 1.833160e-07
+Congratulation!!! Your result is accepted!
+Time of calculation: 0.021053
+Attempt Number 4: The relative error to the reference solution is 1.833160e-07
+Congratulation!!! Your result is accepted!
+Time of calculation: 0.033745
+16 threads
+Attempt Number 1: The relative error to the reference solution is 1.833160e-07
+Congratulation!!! Your result is accepted!
+Time of calculation: 0.194736
+Attempt Number 2: The relative error to the reference solution is 1.833160e-07
+Congratulation!!! Your result is accepted!
+Time of calculation: 0.167342
+Attempt Number 3: The relative error to the reference solution is 1.833160e-07
+Congratulation!!! Your result is accepted!
+Time of calculation: 0.161601
+Attempt Number 4: The relative error to the reference solution is 1.833160e-07
+Congratulation!!! Your result is accepted!
+Time of calculation: 0.205925
+Generating the testing data...
+SAMPLE 1024
+1 threads
+Attempt Number 1: The relative error to the reference solution is 9.730167e-08
+Congratulation!!! Your result is accepted!
+Time of calculation: 4.195130
+Attempt Number 2: The relative error to the reference solution is 9.730167e-08
+Congratulation!!! Your result is accepted!
+Time of calculation: 4.193272
+Attempt Number 3: The relative error to the reference solution is 9.730167e-08
+Congratulation!!! Your result is accepted!
+Time of calculation: 4.206061
+Attempt Number 4: The relative error to the reference solution is 9.730167e-08
+Congratulation!!! Your result is accepted!
+Time of calculation: 4.178149
+4 threads
+Attempt Number 1: The relative error to the reference solution is 9.730167e-08
+Congratulation!!! Your result is accepted!
+Time of calculation: 1.492418
+Attempt Number 2: The relative error to the reference solution is 9.730167e-08
+Congratulation!!! Your result is accepted!
+Time of calculation: 1.633602
+Attempt Number 3: The relative error to the reference solution is 9.730167e-08
+Congratulation!!! Your result is accepted!
+Time of calculation: 1.398135
+Attempt Number 4: The relative error to the reference solution is 9.730167e-08
+Congratulation!!! Your result is accepted!
+Time of calculation: 1.792437
+16 threads
+Attempt Number 1: The relative error to the reference solution is 9.730167e-08
+Congratulation!!! Your result is accepted!
+Time of calculation: 2.105428
+Attempt Number 2: The relative error to the reference solution is 9.730167e-08
+Congratulation!!! Your result is accepted!
+Time of calculation: 2.225277
+Attempt Number 3: The relative error to the reference solution is 9.730167e-08
+Congratulation!!! Your result is accepted!
+Time of calculation: 2.157200
+Attempt Number 4: The relative error to the reference solution is 9.730167e-08
+Congratulation!!! Your result is accepted!
+Time of calculation: 2.236281
